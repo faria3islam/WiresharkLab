@@ -52,7 +52,6 @@ cd WiresharkLab
 sudo apt install wireshark -y
 sudo apt install tshark -y
 sudo apt install python3 python3-pip -y
-pip install -r requirements.txt
 ```
 
 ### Lab Activity 1 - Password Capture Using Wireshark:
