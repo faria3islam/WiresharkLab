@@ -14,7 +14,7 @@
 - Kali Linux Virtual Environment
 - Wireshark (should already be pre installed in Kali Linux)
 - Tshark (should already be pre installed in Kali Linux)
-- Python 3 and libraries numpy, pandas, matplotlib, scikit-learn, and scapy
+- Python 3 and libraries (numpy, pandas, matplotlib, scikit-learn, scapy) 
 
 ## Lab Description: 
 - In this lab, participants will simulate network traffic analysis using Wireshark within a controlled environment (Kali Linux) to then export as a .pcap file. 
