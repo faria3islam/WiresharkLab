@@ -89,8 +89,6 @@ python scripts/preprocess.py
 ```
 python scripts/analyze_anomalies.py
 ```
-![Screenshot of graph produced by analyze_anomalies.py](https://github.com/user-attachments/assets/d46e8be0-33f8-406e-a8dd-705a5f0029d2)
-
 - Run live_packet_analysis.py to display real time anomaly detection graph
 ```
 sudo python scripts/live_packet_analysis.py
