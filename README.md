@@ -2,7 +2,7 @@
 
 ## Objective:
 - Analyze traffic patterns using Wireshark
-- Predict anomalies indicating potential threats using Python TensorFlow
+- Predict anomalies indicating potential threats using Python libraries scapy and scikit-learn
 - Monitor and analyze network data for ongoing security.
 
 ## Pre-requisites: 
