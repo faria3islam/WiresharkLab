@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 # Define the input and output file paths
-pcap_file = "captured_traffic.pcap"
+pcap_file = "Traffic-Capture.pcap"
 output_csv = "traffic_data.csv"
 
 # Verify that the .pcap file exists
