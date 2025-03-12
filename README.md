@@ -100,6 +100,20 @@ sudo python scripts/live_packet_analysis.py
 - What additional features (e.g., source/destination IP patterns) would you consider adding for better anomaly detection?
 - What are the advantages and limitations of automated anomaly detection compared to manual inspection?
 
+## Troubleshooting
+- If unable to create a venv, run the following:
+  -note: alter according to your python version, you can check using python3 --version
+```
+sudo apt install python3.12-venv
+```
+- If commands using python or python3 don't work as expected, try switching between the two to ensure the command runs successfully
+- Module not found error (in our lab, it was sklearn or matplotlib for most of you)
+  - Try running the following as this could be a virtual environment issue, alter as needed if you're using different paths
+```
+sudo /home/kali/WiresharkLab/lab_env/bin/python3
+/home/kali/WiresharkLab/scripts/live_packet_analysis.py
+```
+
 ## Additional Resources:
 - https://github.com/FreeSoftWorks/PacketWorx
 - https://www.geeksforgeeks.org/sniffing-of-login-credential-or-password-capturing-in-wireshark/
