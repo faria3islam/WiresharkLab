@@ -27,6 +27,7 @@
 ### Lab Set Up:
 - Launch Kali Linux settings on your virtual machine
 - Setup Bridged Adaptor Network
+
 ![Screenshot of Bridged Adaptor settings](https://github.com/user-attachments/assets/885583ce-9c5a-49c6-93a4-65b0b59226a4)
 
 - IP Addressing: Run the following command and keep note of the assigned IP.
@@ -65,6 +66,32 @@ In this activity, participants will use Wireshark filters to find passwords used
 - Filter down the packets to POST and GET packets
 - Investigate the packets to find the password used.
 - **Deliverable:** Screenshot of Wireshark capture after filtering and finding password
+
 ![Screenhot of example deliverable](https://github.com/user-attachments/assets/20e2d7c3-982e-45ce-bcfa-67653ef471cf)
 
 ### Lab Activity 2 - Predicting Anomalies - Indicating Potential Threats:
+In this activity, participants get hands-on experience with network security techniques, combining packet capture, data preprocessing, and AI-based anomaly detection.
+**Steps:**
+- Open a terminal and make sure the instructions in “Lab Setup” were applied.
+- Create a virtual environment in python (Recommended)
+- python -m venv path/to/venv
+- source path/to/venv/bin/activate
+- pip install -r requirements.txt
+- Run preprocess.py to convert the provided .pcap file into csv and process it
+- python scripts/preprocess.py
+- Run analyze_anomalies.py to create anomalies csv and graph
+- python scripts/analyze_anomalies.py
+- Run live_packet_analysis.py to display real time anomaly detection graph
+- python scripts/live_packet_analysis.py
+- **Deliverable:** Run live_packet_analysis.py twice and post a screenshot for each of the graphs.
+
+## Discussion:
+- How do protocol-based filters (e.g., DNS, HTTP) help narrow down traffic for investigation?
+- What additional features (e.g., source/destination IP patterns) would you consider adding for better anomaly detection?
+- What are the advantages and limitations of automated anomaly detection compared to manual inspection?
+
+## Additional Resources:
+- https://github.com/FreeSoftWorks/PacketWorx
+- https://www.geeksforgeeks.org/sniffing-of-login-credential-or-password-capturing-in-wireshark/
+- https://youtu.be/qTaOZrDnMzQ?si=aj9jCm5-5ahVV1o_
+
