@@ -2,8 +2,8 @@ import pandas as pd
 import os
 
 # Define the input and output file paths
-pcap_file = "Traffic-Capture.pcap"
-output_csv = "traffic_data.csv"
+pcap_file = '/home/kali/WiresharkLab/data/Traffic-Capture.pcap'
+output_csv = "/home/kali/WiresharkLab/data/traffic_data.csv"
 
 # Verify that the .pcap file exists
 if not os.path.exists(pcap_file):
@@ -28,6 +28,6 @@ data.dropna(inplace=True)  # Drop any rows with missing values
 data["length_normalized"] = data["length"] / data["length"].max()
 
 # Save the preprocessed data
-processed_csv = "preprocessed_data.csv"
+processed_csv = "/home/kali/WiresharkLab/data/preprocessed_data.csv"
 data.to_csv(processed_csv, index=False)
 print(f"Preprocessed data saved to '{processed_csv}'.")
