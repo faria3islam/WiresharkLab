@@ -73,15 +73,25 @@ In this activity, participants get hands-on experience with network security tec
 **Steps:**
 - Open a terminal and make sure the instructions in “Lab Setup” were applied.
 - Create a virtual environment in python (Recommended)
-- python -m venv path/to/venv
-- source path/to/venv/bin/activate
-- pip install -r requirements.txt
+  
+```
+python -m venv path/to/venv
+source path/to/venv/bin/activate
+pip install -r requirements.txt
+```
+
 - Run preprocess.py to convert the provided .pcap file into csv and process it
-- python scripts/preprocess.py
+```
+python scripts/preprocess.py
+```
 - Run analyze_anomalies.py to create anomalies csv and graph
-- python scripts/analyze_anomalies.py
+```
+python scripts/analyze_anomalies.py
+```
 - Run live_packet_analysis.py to display real time anomaly detection graph
-- python scripts/live_packet_analysis.py
+```
+python scripts/live_packet_analysis.py
+```
 - **Deliverable:** Run live_packet_analysis.py twice and post a screenshot for each of the graphs.
 
 ## Discussion:
