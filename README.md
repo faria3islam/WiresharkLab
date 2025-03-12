@@ -60,7 +60,7 @@ In this activity, participants will use Wireshark filters to find passwords used
 - Launch Wireshark on Kali Linux
 - Choose a network to capture (likely eth0)
 - Launch a browser (firefox)
-- Using a vulnerable web page, enter login info (link provided)
+- Using a vulnerable web page, enter login info (link provided: http://testphp.vulnweb.com/login.php)
 - Stop capturing packets.
 - Filter down the packets to POST and GET packets
 - Investigate the packets to find the password used.
@@ -75,8 +75,8 @@ In this activity, participants get hands-on experience with network security tec
 - Create a virtual environment in python (Recommended)
   
 ```
-python -m venv path/to/venv
-source path/to/venv/bin/activate
+python -m venv lab_env
+source lab_env/bin/activate
 pip install -r requirements.txt
 ```
 
