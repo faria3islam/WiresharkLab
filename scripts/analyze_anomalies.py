@@ -49,22 +49,28 @@ data["anomaly_label"] = data["anomaly"].apply(lambda x: "Normal" if x == 1 else 
 data.to_csv(RESULTS_CSV, index=False)
 print(f"Anomaly detection results saved to '{RESULTS_CSV}'.")
 
-# Plot anomalies with better visualization
+# Separate normal and anomalous points for better visualization
+normal_data = data[data["anomaly"] == 1]
+anomalous_data = data[data["anomaly"] == -1]
+
 plt.figure(figsize=(12, 6))
 
-# Use log scaling to improve visibility if data is highly skewed
-plt.yscale("log")
+# Check if data contains only zero or negative values to avoid log-scaling error
+if (data["length_normalized"] > 0).any():
+    plt.yscale("log")
+else:
+    print("Warning: Cannot apply log scale because all normalized values are zero or negative.")
 
-# Scatter plot with color-coded anomalies
-scatter = plt.scatter(data.index, data["length_normalized"], c=data["anomaly_score"], cmap="RdYlGn", alpha=0.7)
-plt.colorbar(scatter, label="Anomaly Score")
+# Plot normal points in blue
+plt.scatter(normal_data.index, normal_data["length_normalized"], 
+            color="blue", label="Normal", alpha=0.6, marker="o")
 
-# Adjust threshold dynamically
-threshold = np.percentile(data["anomaly_score"], 5)  # Set threshold at the bottom 5%
-plt.axhline(y=threshold, color="black", linestyle="--", label=f"Anomaly Threshold ({threshold:.4f})")
+# Plot anomalous points in red with 'X' markers
+plt.scatter(anomalous_data.index, anomalous_data["length_normalized"], 
+            color="red", label="Anomaly", alpha=0.9, marker="x")
 
 plt.xlabel("Packet Index")
-plt.ylabel("Normalized Packet Length (Log Scale)")
+plt.ylabel("Normalized Packet Length")
 plt.title("Anomaly Detection in Network Traffic")
 plt.legend()
 plt.grid(True)
