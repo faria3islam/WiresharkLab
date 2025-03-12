@@ -18,7 +18,7 @@
 
 ## Lab Description: 
 - In this lab, participants will simulate network traffic analysis using Wireshark within a controlled environment (Kali Linux) to then export as a .pcap file. 
-- Participants will then simulate predictive anomaly detection using machine learning (TensorFlow Model).
+- Participants will then simulate predictive anomaly detection using machine learning.
 
 ## Duration: 
 - 30-45 minutes.
@@ -40,7 +40,7 @@ sudo apt update
 ```
 - Clone Github repository:
 ```
-git clone https://github.com/faria3islam/WiresharkLab
+git clone https://github.com/faria3islam/WiresharkLab.git
 ```
 - Change directory into WiresharkLab
 ```
