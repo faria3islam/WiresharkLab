@@ -1,5 +1,6 @@
 __pycache__/
 *.log
 *.tmp
+anomaly_detection_results.csv
 preprocessed_data.csv
 traffic_data.csv
