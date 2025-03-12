@@ -2,8 +2,9 @@ import pandas as pd
 import os
 from sklearn.ensemble import IsolationForest
 import matplotlib.pyplot as plt
+import numpy as np
 
-# Define paths using os.path.join() for flexibility
+# Define paths
 BASE_DIR = os.path.expanduser("~/WiresharkLab")
 DATA_FILE = os.path.join(BASE_DIR, "data/preprocessed_data.csv")
 RESULTS_DIR = os.path.join(BASE_DIR, "results")
@@ -30,27 +31,41 @@ if data.empty:
 # Use only the normalized length feature
 features = data[["length_normalized"]].values
 
-# Initialize and train Isolation Forest for anomaly detection
-print("Training Isolation Forest model...")
-contamination_rate = 0.05  # Change if needed
-model = IsolationForest(n_estimators=100, contamination=contamination_rate, random_state=42)
-data["anomaly"] = model.fit_predict(features)
+# Dynamically determine contamination (percentage of anomalies)
+contamination_rate = max(0.1, min(0.1, 1.0 / len(data)))
 
-# Mark anomalies
+# Train Isolation Forest
+print(f"Training Isolation Forest model with contamination={contamination_rate:.4f}...")
+model = IsolationForest(n_estimators=100, contamination=contamination_rate, random_state=42)
+
+# **Fix: Fit the model before calling decision_function**
+data["anomaly"] = model.fit_predict(features)
+data["anomaly_score"] = model.decision_function(features)  # Get anomaly scores **AFTER FITTING**
+
+# Convert anomalies to labels
 data["anomaly_label"] = data["anomaly"].apply(lambda x: "Normal" if x == 1 else "Anomaly")
 
-# Save the results to a CSV file
+# Save the results
 data.to_csv(RESULTS_CSV, index=False)
 print(f"Anomaly detection results saved to '{RESULTS_CSV}'.")
 
-# Visualize the results
-plt.figure(figsize=(10, 6))
-scatter = plt.scatter(data.index, data["length_normalized"], c=data["anomaly"], cmap="coolwarm", alpha=0.7)
-plt.axhline(y=0.5, color="gray", linestyle="--", label="Threshold")
+# Plot anomalies with better visualization
+plt.figure(figsize=(12, 6))
+
+# Use log scaling to improve visibility if data is highly skewed
+plt.yscale("log")
+
+# Scatter plot with color-coded anomalies
+scatter = plt.scatter(data.index, data["length_normalized"], c=data["anomaly_score"], cmap="RdYlGn", alpha=0.7)
+plt.colorbar(scatter, label="Anomaly Score")
+
+# Adjust threshold dynamically
+threshold = np.percentile(data["anomaly_score"], 5)  # Set threshold at the bottom 5%
+plt.axhline(y=threshold, color="black", linestyle="--", label=f"Anomaly Threshold ({threshold:.4f})")
+
 plt.xlabel("Packet Index")
-plt.ylabel("Normalized Packet Length")
+plt.ylabel("Normalized Packet Length (Log Scale)")
 plt.title("Anomaly Detection in Network Traffic")
 plt.legend()
-plt.colorbar(scatter, label="Anomaly Score")  # Adds a color legend for anomalies
 plt.grid(True)
 plt.show()
