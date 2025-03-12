@@ -90,7 +90,7 @@ python scripts/analyze_anomalies.py
 ```
 - Run live_packet_analysis.py to display real time anomaly detection graph
 ```
-python scripts/live_packet_analysis.py
+sudo python scripts/live_packet_analysis.py
 ```
 - **Deliverable:** Run live_packet_analysis.py twice and post a screenshot for each of the graphs.
 
